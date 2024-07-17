@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { codeToHtml } from "shiki";
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ng-wasm-bug';
+
+  constructor() {
+    codeToHtml('const a = 1', {
+      lang: 'javascript',
+      theme: 'vitesse-dark'
+    }).then((html) => {
+      console.log(html);
+    });
+  }
 }
